@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="myForm"></form>
+    <h1 style="text-align: center;">Order Form</h1>
+    <br>
+    <br>
+    <div style="text-align: center">
+<h3>Enter your details</h3>
+
+    <label for="firstname"> First Name</label>
+    <input type="text" id="firstname" placeholder="Enter Name">
+    <br>
+    <br>
+    
+<h1>Merchandise</h1>
+<p style="color:green;">Free Postage on all orders over £20, excluding postage</p>
+</div>
+<table border="1%" align="center">
+    <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+    </tr>
+    <tr>
+        <td>
+            <img style="width:200px; height:200px;" src="ring.jpg" alt="">
+            <span>Ring</span> 
+        </td>
+        <td>
+            <input type="number" id="ringprice">
+            <label for="mugprice">type this price in input without symbol "£5"</label>
+        </td>
+        <td>
+            <input type="number" placeholder="Quantity" id="qty1">
+        </td>
+    </tr>
+    <tr>
+            <td>
+                <img style="width:200px; height:200px;" src="Mug.jpg" alt="">
+                <span>Mugs</span> 
+            </td>
+            <td>
+                <input type="number" id="mugprice">
+            <label for="mugprice">type this price in input without symbol "£10"</label>
+            </td>
+            <td>
+                <input type="number" placeholder="Quantity" id="qty2">
+            </td>
+        </tr>
+</table>
+<br>
+<br>
+<div style="text-align: center">
+<label for="postage"> Postage Charges</label>
+<input type="text" disabled id="postage">
+<label for="discount">Items Ordered</label>
+<input type="text" disabled id="item"> 
+<label for="total">Total</label>
+<input type="text" id="costtotal" disabled>
+
+<button onclick="total()">Total Cost</button>
+<button onclick="reset()">Reset</button>
+
+</div>
+</form>
+</body>
+<script>
+    function total() {
+        let ring = document.getElementById("ringprice").value
+        let ringqty = document.getElementById("qty1").value
+        let ringtotal = ring * ringqty;
+        let mug = document.getElementById("mugprice").value
+        let mugqty = document.getElementById("qty2").value
+        let mugtotal = mug * mugqty;
+        let total = ringtotal + mugtotal;
+let result = document.getElementById("costtotal").value = total;
+let item = parseInt(ringqty) + parseInt(mugqty);
+let order = document.getElementById("item").value = item;
+//Postage condition statement
+if (total >=20)
+{
+    let delivery = document.getElementById("postage").value ="No Postage Charges";  
+    }
+    else {
+        let delivery = document.getElementById("postage").value="£2";  
+    }
+//Quantity condition statement    
+if (ringqty > 3){
+    alert(" You cannot order quantity greater than 3");
+    let result = document.getElementById("costtotal").value = 0;
+    let delivery = document.getElementById("postage").value ="None";  
+}
+if (mugqty > 3){
+    alert(" You cannot order quantity greater than 3");
+    let result = document.getElementById("costtotal").value = 0;
+    let delivery = document.getElementById("postage").value ="None";  
+}
+}
+
+function reset() {
+    let ring = document.getElementById("ringprice").value = "";
+        let ringqty = document.getElementById("qty1").value = "";
+        let mug = document.getElementById("mugprice").value = "";
+        let mugqty = document.getElementById("qty2").value = "";
+        let result = document.getElementById("costtotal").value = "";
+        let delivery = document.getElementById("postage").value ="";  
+        let order = document.getElementById("item").value = "";
+}
+</script>
+</html>
